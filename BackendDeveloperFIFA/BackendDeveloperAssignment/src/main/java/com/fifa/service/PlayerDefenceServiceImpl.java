@@ -42,10 +42,10 @@ public class PlayerDefenceServiceImpl implements PlayerDefenceService{
 			//throw exception
 		}
 		if(position!=null)
-			list.removeIf(i->(i.getPosition()!=position));
+			list.removeIf(i->(!i.getPosition().equals(position)));
 		
 		if(team!=null)
-			list.removeIf(i ->(i.getTeam()!=team));
+			list.removeIf(i ->(!i.getTeam().equals(team)));
 		
 		if(tackles!=null)
 			list.removeIf(i->(i.getTackles()!=tackles));
