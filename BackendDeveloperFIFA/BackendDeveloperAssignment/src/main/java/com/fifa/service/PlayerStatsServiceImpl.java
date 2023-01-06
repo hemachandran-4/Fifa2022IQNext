@@ -40,14 +40,18 @@ public class PlayerStatsServiceImpl implements PlayerStatsService{
 			//throw exception
 		}
 		if(games!=null)
-			list.stream().filter(i->(i.getGames()==games));
-		if(minutes!=null)
-			list.stream().filter(i->(i.getMinutes()==minutes));
+			list.removeIf(i->(i.getGames()!=games));
+		
+		if(minutes!=null) 
+			list.removeIf(i->(i.getMinutes()!=minutes));
+		
 		if(goals!=null)
-			list.stream().filter(i->(i.getGoals()==goals));
+			list.removeIf(i->(i.getGoals()!=goals));
+		
 		if(birth_year!=null) 
-			list.stream().filter(i->(i.getBirth_year()==birth_year));
-		return (List<Player_Stats>) list;
+			list.removeIf(i->(i.getBirth_year()!=birth_year));
+		
+		return list;
 	}
 
 }
