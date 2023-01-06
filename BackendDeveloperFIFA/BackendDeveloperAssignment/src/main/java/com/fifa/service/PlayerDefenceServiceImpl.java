@@ -42,14 +42,18 @@ public class PlayerDefenceServiceImpl implements PlayerDefenceService{
 			//throw exception
 		}
 		if(position!=null)
-		list.stream().filter(i->(i.getPosition()==position));
+			list.removeIf(i->(i.getPosition()!=position));
+		
 		if(team!=null)
-			list.stream().filter(i ->(i.getTeam()==team));
+			list.removeIf(i ->(i.getTeam()!=team));
+		
 		if(tackles!=null)
-			list.stream().filter(i->(i.getTackles()==tackles));
+			list.removeIf(i->(i.getTackles()!=tackles));
+		
 		if(tackles_won!=null)
-			list.stream().filter(i->(i.getTackles_won()==tackles_won));
-		return (List<Player_Defence>) list;
+			list.removeIf(i->(i.getTackles_won()!=tackles_won));
+		
+		return list;
 	}
 
 }
